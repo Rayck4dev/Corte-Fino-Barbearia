@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig, getWhatsAppLink } from "../config/siteConfig";
 import ServiceCard from "../components/ServiceCard";
@@ -122,85 +123,136 @@ export default function Services() {
         <div className="custom-swiper-pagination flex justify-center items-center gap-2 mt-8 h-4"></div>
       </div>
 
-      <AnimatePresence>
-        {selectedService && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedService(null)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              className="relative bg-base-card border border-white/[0.08] w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl z-10"
-            >
-              <div className="h-56 relative">
-                <img
-                  src={selectedService.image}
-                  alt={selectedService.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-base-card to-transparent" />
-                <button
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {selectedService && (
+              <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
+                {/* BACKDROP */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   onClick={() => setSelectedService(null)}
-                  className="absolute top-4 right-4 bg-black/40 hover:bg-black/70 backdrop-blur-sm text-white p-2 rounded-full transition-colors"
+                  className="absolute inset-0 bg-black/80 backdrop-blur-md"
+                />
+
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    scale: 0.95,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.95,
+                    y: 20,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 24,
+                  }}
+                  className="
+              relative
+              z-10
+              w-full
+              max-w-lg
+              max-h-[90vh]
+              overflow-y-auto
+              rounded-3xl
+              bg-base-card
+              border
+              border-white/[0.08]
+              shadow-2xl
+            "
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M6 18L18 6M6 6l12 12"
+                  <div className="relative h-56">
+                    <img
+                      src={selectedService.image}
+                      alt={selectedService.name}
+                      className="w-full h-full object-cover"
                     />
-                  </svg>
-                </button>
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-black uppercase text-brand tracking-wide mb-3">
-                  {selectedService.name}
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-6">
-                  {selectedService.description}
-                </p>
-                <h4 className="text-zinc-300 font-bold text-xs uppercase tracking-wider mb-3">
-                  O que está incluso:
-                </h4>
-                <ul className="space-y-2 mb-8">
-                  {selectedService.details.map((detail, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-center gap-3 text-zinc-400 text-sm"
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-base-card to-transparent" />
+
+                    <button
+                      onClick={() => setSelectedService(null)}
+                      className="
+                  absolute
+                  top-4
+                  right-4
+                  p-2
+                  rounded-full
+                  bg-black/40
+                  hover:bg-black/70
+                  backdrop-blur-sm
+                  transition-colors
+                "
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0" />
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  href={getWhatsAppLink(
-                    `Olá! Gostaria de consultar a disponibilidade de horários para o serviço premium: *${selectedService.name}*.`,
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-4 text-xs font-bold"
-                >
-                  Consultar Disponibilidade
-                </Button>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.5}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div className="p-8">
+                    <h3 className="text-2xl font-black uppercase text-brand tracking-wide mb-3">
+                      {selectedService.name}
+                    </h3>
+
+                    <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                      {selectedService.description}
+                    </p>
+
+                    <h4 className="text-zinc-300 font-bold text-xs uppercase tracking-wider mb-3">
+                      O que está incluso:
+                    </h4>
+
+                    <ul className="space-y-2 mb-8">
+                      {selectedService.details.map((detail, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-center gap-3 text-zinc-400 text-sm"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      href={getWhatsAppLink(
+                        `Olá! Gostaria de consultar a disponibilidade de horários para o serviço premium: *${selectedService.name}*.`,
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-4 text-xs font-bold"
+                    >
+                      Consultar Disponibilidade
+                    </Button>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </section>
   );
 }

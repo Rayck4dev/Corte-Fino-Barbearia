@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import Services from "./sections/Services";
@@ -17,7 +18,11 @@ export default function App() {
       </AnimatePresence>
 
       <motion.div
-        initial={{ opacity: 0.35, scale: 0.98, filter: "blur(8px)" }}
+        initial={{
+          opacity: 0.35,
+          scale: 0.98,
+          filter: "blur(8px)",
+        }}
         animate={{
           opacity: isLoading ? 0.35 : 1,
           scale: isLoading ? 0.98 : 1,
@@ -31,7 +36,6 @@ export default function App() {
       >
         <Navbar />
         <Hero />
-
         <Services />
         <About />
         <Footer />
