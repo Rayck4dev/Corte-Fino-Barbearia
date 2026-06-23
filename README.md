@@ -15,7 +15,7 @@ Este repositório contém a interface da página principal (Landing Page), inclu
     "Onde o clássico encontra a precisão. Barbearia de alta performance."
   </h3>
   
-  [![Link do Projeto](https://img.shields.io/badge/Acesse%20o%20Site-Live%20Demo-amber.svg?style=for-the-badge&logo=codeforces&logoColor=black)](NIVEL_DO_PROJETO_AQUI)
+[![Link do Projeto](https://img.shields.io/badge/Acesse%20o%20Site-Live%20Demo-amber.svg?style=for-the-badge&logo=codeforces&logoColor=black)](https://barbershopcortefino.vercel.app/)
 </div>
 
 ---
