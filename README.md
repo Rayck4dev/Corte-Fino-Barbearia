@@ -28,24 +28,9 @@ Este repositório contém a interface da página principal (Landing Page), inclu
 
 ---
 
-## 🛠️ Tecnologias e Ferramentas (Core)
-
-Este projeto foi construído utilizando as seguintes tecnologias modernas de desenvolvimento frontend:
-
-<div align="center">
-
 ## 🛠️ Tecnologias Utilizadas
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-
-![TypeScript](https://img.shields.io/badge/typescript-%23007acc.svg?style=for-the-badge&logo=typescript&logoColor=white)
-
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-
-![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=white) ![Motion](https://img.shields.io/badge/Motion-white.svg?style=for-the-badge&logo=framer)
-
-</div>
-
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007acc.svg?style=for-the-badge&logo=typescript&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=white)![Motion](https://img.shields.io/badge/Motion-gray.svg?style=for-the-badge&logo=framer)
 
 ---
 
@@ -59,7 +44,7 @@ Antes de começar, você precisará ter o [Node.js](https://nodejs.org/) instala
 
 1.  **Clone este repositório:**
     ```bash
-    git clone [https://github.com/Rayck4dev/Corte-Fino-Barbearia.git](https://github.com/Rayck4dev/Corte-Fino-Barbearia.git)
+    git clone https://github.com/Rayck4dev/Corte-Fino-Barbearia.git
     ```
 
 2.  **Acesse a pasta do projeto:**
@@ -85,7 +70,4 @@ Antes de começar, você precisará ter o [Node.js](https://nodejs.org/) instala
 
 ---
 
-| Desenvolvido por DevLab © 2026 |
-
----
-  
+| Desenvolvido por DevLab © 2026 
