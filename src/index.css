@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-swiper-pagination .swiper-pagination-bullet {
+  background: #4b5563 !important;
+  opacity: 0.4;
+  width: 6px;
+  height: 6px;
+  margin: 0 !important;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  background: #f59e0b !important;
+  opacity: 1;
+  width: 20px;
+  border-radius: 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
